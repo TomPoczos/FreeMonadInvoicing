@@ -16,18 +16,9 @@ object Invoices {
   case class FindUnpaid(accountId: AccountId, date: String)
       extends InvoiceOp[List[Invoice]]
 
-  object InvoiceOp {
-    type InvoiceOpF[A] = Free[InvoiceOp, A]
+  type InvoiceOpF[A] = Free[InvoiceOp, A]
 
-    def create(amount: Int, accountId: AccountId, date: String): InvoiceOpF[InvoiceId] =
-      liftF[InvoiceOp, InvoiceId](Create(amount, accountId, date))
-
-    def find(invoiceId: InvoiceId): InvoiceOpF[Invoice] =
-      liftF[InvoiceOp, Invoice](Find(invoiceId))
-
-    def findUnpaid(accountId: AccountId, date: String): InvoiceOpF[List[Invoice]] =
-      liftF[InvoiceOp, List[Invoice]](FindUnpaid(accountId, date))
-
+  object Implicits {
     implicit def invoiceOpI[F[_]](implicit I: InjectK[InvoiceOp, F]) = 
       new InvoiceOpI 
   }

@@ -1,6 +1,7 @@
 import Configuration.DbConfig
 import algebras.Accounts.Implicits._
 import algebras.Balances.Implicits._
+import algebras.Invoices.Implicits._
 import algebras.InvoiceApp._
 import algebras.Migrations.Implicits._
 import algebras.Payments.Implicits._

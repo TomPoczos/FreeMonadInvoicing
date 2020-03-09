@@ -1,7 +1,7 @@
 package interpreters
 
 import Model._
-import algebras.Balances.BalanceOp.BalanceOpF
+import algebras.Balances.BalanceOpF
 import algebras.Balances.{BalanceOp, _}
 import cats.implicits._
 import cats.~>

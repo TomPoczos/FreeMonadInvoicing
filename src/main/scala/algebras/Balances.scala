@@ -17,27 +17,7 @@ object Balances {
   case class FindLastForDate(acountId: AccountId, date: String)
       extends BalanceOp[Balance]
 
-  object BalanceOp {
-
-    type BalanceOpF[A] = Free[BalanceOp, A]
-
-    def create(
-        amount: Int,
-        acountId: AccountId,
-        date: String
-    ): BalanceOpF[BalanceId] =
-      liftF[BalanceOp, BalanceId](Create(amount, acountId, date))
-
-    def findLast(accountId: AccountId): BalanceOpF[Balance] =
-      liftF[BalanceOp, Balance](FindLast(accountId))
-
-    def findLastForDate(
-        accountId: AccountId,
-        date: String
-    ): BalanceOpF[Balance] =
-      liftF[BalanceOp, Balance](FindLast(accountId))
-
-  }
+  type BalanceOpF[A] = Free[BalanceOp, A]
 
   class BalanceOpI[F[_]](implicit I: InjectK[BalanceOp, F]) {
 

@@ -1,6 +1,5 @@
 package interpreters
 
-import algebras.Migrations.Migration._
 import algebras.Migrations.{Migration, _}
 import cats.~>
 import doobie.free.connection.ConnectionIO

@@ -12,13 +12,7 @@ object Payments {
   case class Create(amount: Int, invoiceId: InvoiceId, date: String) 
       extends PaymentOp[PaymentId]
 
-  object PaymentOp {
-
-    type PaymentOpF[A] = Free[PaymentOp, A]
-
-    def create(amount: Int, invoice_fk: InvoiceId, date: String) =
-      liftF[PaymentOp, PaymentId](Create(amount, invoice_fk, date))
-  }
+  type PaymentOpF[A] = Free[PaymentOp, A]
 
   class PaymentOpI[F[_]](implicit I: InjectK[PaymentOp, F]) {
     def create(amount: Int, invoice_fk: InvoiceId, date: String): Free[F, PaymentId] =

@@ -1,7 +1,7 @@
 package interpreters
 
 import Model.{Invoice, _}
-import algebras.Invoices.InvoiceOp.InvoiceOpF
+import algebras.Invoices.InvoiceOpF
 import algebras.Invoices._
 import cats.implicits._
 import cats.~>

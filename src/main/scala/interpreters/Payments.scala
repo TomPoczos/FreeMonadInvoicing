@@ -1,12 +1,11 @@
 package interpreters
 
 import Model._
-import algebras.Payments.PaymentOp._
-import algebras.Payments.{PaymentOp, _}
 import cats.implicits._
 import cats.~>
 import doobie.free.connection.ConnectionIO
 import doobie.implicits._
+import algebras.Payments._
 
 object Payments {
 

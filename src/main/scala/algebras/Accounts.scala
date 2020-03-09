@@ -13,15 +13,7 @@ object Accounts {
 
   case class Find(id: AccountId) extends AccountOp[Account]
 
-  object AccountOp {
-    type AccountOpF[A] = Free[AccountOp, A]
-
-    def create: AccountOpF[AccountId] =
-      liftF[AccountOp, AccountId](Create)
-
-    def find(id: AccountId): AccountOpF[Account] =
-      liftF[AccountOp, Account](Find(id))
-  }
+  type AccountOpF[A] = Free[AccountOp, A]
 
   class AccountOpI[F[_]](implicit I: InjectK[AccountOp, F]) {
 

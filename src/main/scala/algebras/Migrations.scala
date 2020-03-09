@@ -19,25 +19,7 @@ object Migrations {
 
   case object CreateBalancetable extends Migration[Unit]
 
-  object Migration {
-
-    type MigrationF[A] = Free[Migration, A]
-
-    def enableForeignkeys: MigrationF[Unit] =
-      liftF[Migration, Unit](EnableForeignkeys)
-
-    def createAccountTable: MigrationF[Unit] =
-      liftF[Migration, Unit](CreateAccountTable)
-
-    def createInvoiceTable: MigrationF[Unit] =
-      liftF[Migration, Unit](CreateInvoiceTable)
-
-    def createPaymentTable: MigrationF[Unit] =
-      liftF[Migration, Unit](CreatePaymentTable)
-
-    def createBalancetable: MigrationF[Unit] =
-      liftF[Migration, Unit](CreateBalancetable)
-  }
+  type MigrationF[A] = Free[Migration, A]
 
   class MigrationI[F[_]](implicit I: InjectK[Migration, F]) {
 

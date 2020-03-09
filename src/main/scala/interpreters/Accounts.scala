@@ -1,7 +1,7 @@
 package interpreters
 
 import Model._
-import algebras.Accounts.AccountOp.AccountOpF
+import algebras.Accounts.AccountOpF
 import algebras.Accounts._
 import cats.implicits._
 import cats.~>

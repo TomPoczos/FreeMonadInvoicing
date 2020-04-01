@@ -19,6 +19,7 @@ object InvoiceApp {
       )
     )
 
+  // not used, kept here for code discussion
   def ioInterpreter[F[_]: Sync: Transactor]: ConnectionIO ~> F =
     λ[ConnectionIO ~> F](_.transact(F)(F))
 

@@ -19,6 +19,10 @@ object Main extends IOApp {
       DbConfig.dbUrl
     )
 
+    // the whole program can be interpreted in one go as seen in the commented out code below,
+    // but that would mean that all the code runs in the same transaction. By interpreting
+    // every command separately proper transaction boundaries can be enforced
+
     for {
       
       _ <- runMigrations.interpret[IO]
@@ -68,20 +72,6 @@ object Main extends IOApp {
       _ <- IO(println(balance3))
       _ <- IO(println(balance4))
       _ <- IO(println(balance5))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     } yield ExitCode.Success
 
     // val program: InvoiceAppF[(AccountId, Account.Balance)] =
